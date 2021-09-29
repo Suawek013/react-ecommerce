@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const uri =
 	"mongodb+srv://slawek:haslo@cluster0.o3ytz.mongodb.net/shop?retryWrites=true&w=majority";
 mongoose
-	.connect(uri, {
+	.connect(process.env.MONGODB_URI || uri, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
