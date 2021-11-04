@@ -7,7 +7,7 @@ function ProductsPage() {
 
 	useEffect(() => {
 		setIsLoading(true);
-		fetch("/api/products")
+		fetch(process.env.REACT_APP_URL_API + "/products")
 			.then((response) => {
 				return response.json();
 			})
