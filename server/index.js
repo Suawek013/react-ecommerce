@@ -1,6 +1,6 @@
 const express = require("express");
 const db = require("./config/db");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
 const path = require("path");
 
 const app = express();
@@ -14,9 +14,11 @@ app.get("/api", (req, res) => {
 	res.json({ message: "Hello from server!" });
 });
 
-if (process.env.NODE_ENV === "production") {
-	app.use(express.static("../client/build"));
-}
+app.use(express.static(path.join("public")));
+
+app.use((req, res, next) => {
+	res.sendFile(path.resolve(__dirname, "public", "index.html"));
+});
 
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
