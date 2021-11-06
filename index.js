@@ -14,10 +14,10 @@ app.get("/api", (req, res) => {
 	res.json({ message: "Hello from server!" });
 });
 
-app.use(express.static(path.join("public")));
+app.use(express.static(path.join("client/build")));
 
 app.use((req, res, next) => {
-	res.sendFile(path.resolve(__dirname, "public", "index.html"));
+	res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
 });
 
 app.listen(PORT, () => {

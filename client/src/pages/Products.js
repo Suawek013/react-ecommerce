@@ -27,6 +27,8 @@ function ProductsPage() {
 				setLoadedProducts(products);
 			})
 			.catch((err) => {
+				console.log(process.env.REACT_APP_URL_API);
+
 				console.log("Error while fetching products: ", err);
 			});
 	}, []);
